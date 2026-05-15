@@ -4,18 +4,20 @@ import {
   Youtube,
   Mail,
   MessageCircle,
-  MapPin,
   Sparkles,
 } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="relative mt-32 overflow-hidden bg-gradient-night text-jaipur-ivory grain">
+    <footer className="relative mt-32 overflow-hidden bg-gradient-night text-white grain">
 
-      {/* SKYLINE BACKGROUND */}
+      {/* GLOW BACKGROUND */}
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 size-[600px] rounded-full bg-jaipur-pink/20 blur-3xl pointer-events-none" />
+
+      {/* SKYLINE */}
       <svg
         viewBox="0 0 1440 220"
-        className="absolute bottom-0 inset-x-0 w-full text-jaipur-pink/15"
+        className="absolute bottom-0 inset-x-0 w-full text-jaipur-pink/10"
         preserveAspectRatio="none"
         aria-hidden
       >
@@ -25,96 +27,68 @@ export default function Footer() {
         />
       </svg>
 
-      {/* GLOW */}
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 size-[600px] rounded-full bg-jaipur-pink/20 blur-3xl pointer-events-none" />
-
       <div className="relative mx-auto max-w-7xl px-6 md:px-10 pt-24 pb-10">
 
         <div className="grid lg:grid-cols-12 gap-12">
 
-          {/* LEFT SECTION */}
+          {/* LEFT */}
           <div className="lg:col-span-5">
-            <Link to="/" className="flex items-center gap-2">
-              <span className="size-10 rounded-full bg-gradient-sunset grid place-items-center">
+            <Link to="/" className="flex items-center gap-2 group">
+              <span className="size-10 rounded-full gradient-bg grid place-items-center glow group-hover:scale-105 transition">
                 <Sparkles className="size-4 text-black" />
               </span>
 
-              <span className="font-display text-3xl md:text-4xl">
+              <span className="font-display text-3xl md:text-4xl tracking-tight">
                 Jaipur<span className="text-jaipur-pink">.com</span>
               </span>
             </Link>
 
-            <p className="mt-5 max-w-md font-serif text-lg text-jaipur-ivory/70 leading-relaxed">
-              A cinematic media house capturing Jaipur’s culture, creators,
-              cafés, and hidden stories — one frame at a time.
+            <p className="mt-5 max-w-md text-neutral-300 leading-relaxed">
+              A cinematic media house celebrating the soul of Jaipur —
+              its palaces, people, cafés, creators and untold corners.
             </p>
 
-            {/* SOCIAL BUTTONS */}
+            {/* SOCIAL */}
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="https://wa.me/919999999999"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full glass-dark px-5 py-2.5 text-sm hover:bg-white/10 transition"
-              >
-                <MessageCircle className="size-4" /> WhatsApp
-              </a>
-
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full glass-dark px-5 py-2.5 text-sm hover:bg-white/10 transition"
-              >
-                <Instagram className="size-4" /> Instagram
-              </a>
-
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-jaipur-pink text-white px-5 py-2.5 text-sm hover:opacity-90 transition"
-              >
-                Collaborate
-              </Link>
+              {[Instagram, Youtube, MessageCircle, Mail].map((Icon, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  className="size-11 grid place-items-center rounded-full glass hover:gradient-bg hover:text-black transition-all hover:scale-105"
+                >
+                  <Icon className="size-5" />
+                </a>
+              ))}
             </div>
           </div>
 
           {/* EXPLORE */}
           <div className="lg:col-span-3">
-            <p className="text-xs uppercase tracking-[0.25em] text-jaipur-ivory/40">
+            <p className="text-xs uppercase tracking-[0.3em] text-neutral-400">
               Explore
             </p>
 
-            <ul className="mt-5 space-y-3 font-serif text-lg">
-              <li>
-                <Link to="/discover" className="hover:text-jaipur-pink transition">
-                  Discover Jaipur
-                </Link>
-              </li>
-              <li>
-                <Link to="/reels" className="hover:text-jaipur-pink transition">
-                  Featured Reels
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="hover:text-jaipur-pink transition">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:text-jaipur-pink transition">
-                  About
-                </Link>
-              </li>
+            <ul className="mt-5 space-y-3 text-neutral-300">
+              {["Discover", "Reels", "Services", "About"].map((l) => (
+                <li key={l}>
+                  <Link
+                    to={`/${l.toLowerCase()}`}
+                    className="hover:text-jaipur-pink transition"
+                  >
+                    {l}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* CONNECT */}
           <div className="lg:col-span-4">
-            <p className="text-xs uppercase tracking-[0.25em] text-jaipur-ivory/40">
+            <p className="text-xs uppercase tracking-[0.3em] text-neutral-400">
               Connect
             </p>
 
-            <ul className="mt-5 space-y-3 text-jaipur-ivory/80">
+            <ul className="mt-5 space-y-3 text-neutral-300">
               <li className="flex items-center gap-3">
                 <Mail className="size-4 text-jaipur-pink" />
                 hello@jaipur.com
@@ -122,18 +96,18 @@ export default function Footer() {
 
               <li className="flex items-center gap-3">
                 <MessageCircle className="size-4 text-jaipur-pink" />
-                +91 99999 99999
+                +91 98000 00000
               </li>
 
               <li className="flex items-center gap-3">
-                <MapPin className="size-4 text-jaipur-pink" />
-                Jaipur, Rajasthan
+                <Sparkles className="size-4 text-jaipur-pink" />
+                C-Scheme, Jaipur
               </li>
             </ul>
 
             <Link
               to="/contact"
-              className="mt-6 inline-flex items-center gap-2 text-jaipur-pink hover:text-jaipur-sunset transition"
+              className="mt-6 inline-flex items-center gap-2 text-jaipur-pink hover:text-white transition"
             >
               Start a collaboration →
             </Link>
@@ -141,12 +115,12 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row gap-6 items-center justify-between">
-          <p className="font-serif italic text-jaipur-ivory/40 text-sm">
-            Made With Stories From Jaipur
+        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-sm text-neutral-400 italic">
+            Made with stories from Jaipur
           </p>
 
-          <p className="text-xs tracking-[0.3em] uppercase text-jaipur-ivory/30">
+          <p className="text-xs tracking-[0.3em] uppercase text-neutral-500">
             © {new Date().getFullYear()} Jaipur.com
           </p>
         </div>
